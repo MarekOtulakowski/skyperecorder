@@ -19,7 +19,7 @@ namespace skyperecorder.library
         Online,
 
         /// <summary>
-        /// not availabe difference don't distrub
+        /// not availabe difference don't distrub or I'm away
         /// </summary>
         NotAvailable,
 
