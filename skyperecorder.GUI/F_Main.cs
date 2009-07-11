@@ -7,7 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using skyperecorder.Library; 
+using skyperecorder.Library;
+using System.IO; 
 #endregion
 
 namespace skyperecorder.GUI
@@ -76,6 +77,57 @@ namespace skyperecorder.GUI
 
             //inform user wher manager disconnect from API Skype
             AccessToSkype(false);
+        }
+
+        /// <summary>
+        /// Event when press button "Open Chat Folder"
+        /// </summary>
+        /// <param name="sender">Button</param>
+        /// <param name="e">Button events</param>
+        private void B_openChatFolder_Click(object sender, EventArgs e)
+        {
+            if (managerSkype != null)
+            {
+                OpenFolderInExplorer(managerSkype.tempChatDirectory); 
+            }
+        }
+
+        /// <summary>
+        /// Event when press button "Open Voice folder"
+        /// </summary>
+        /// <param name="sender">Button</param>
+        /// <param name="e">Button events</param>
+        private void B_openVoiceFolder_Click(object sender, EventArgs e)
+        {
+            if (managerSkype != null)
+            {
+                OpenFolderInExplorer(managerSkype.tempVoiceDirectory); 
+            }
+        }
+
+        /// <summary>
+        /// Event when press button "Open Video folder"
+        /// </summary>
+        /// <param name="sender">Button</param>
+        /// <param name="e">Button events</param>
+        private void B_openVideoFolder_Click(object sender, EventArgs e)
+        {
+            if (managerSkype != null)
+            {
+                OpenFolderInExplorer(managerSkype.tempVideoDirectory); 
+            }
+        }
+
+        private void OpenFolderInExplorer(string path)
+        {
+            if (Directory.Exists(path))
+            {
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                process.StartInfo.UseShellExecute = true;
+                process.StartInfo.FileName = @"explorer";
+                process.StartInfo.Arguments = path;
+                process.Start();
+            }
         }
     }
 }

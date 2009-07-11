@@ -43,9 +43,9 @@ namespace skyperecorder.Library
     public class Manager
     {
         #region Variable
-        string tempChatDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempChat";
-        string tempVoiceDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVoice";
-        string tempVideoDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVideo";
+        public string tempChatDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempChat";
+        public string tempVoiceDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVoice";
+        public string tempVideoDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVideo";
         public string ErrorCode { get; set; } 
         public static SKYPE4COMLib.Skype skype = new SKYPE4COMLib.Skype();
         #endregion
@@ -58,8 +58,41 @@ namespace skyperecorder.Library
             //attach to skype API
             ConnectToSkype();
 
+            //create temp directory
+            CreateTempDirectory();
+
             //attach to skype events
             ConnectToSkypeEvents();
+        }
+
+        /// <summary>
+        /// Create temp directory if not exist
+        /// </summary>
+        /// <returns>true if all success</returns>
+        private bool CreateTempDirectory()
+        {
+            bool result = false;
+            try
+            {
+                if (!Directory.Exists(tempChatDirectory))
+                {
+                    Directory.CreateDirectory(tempChatDirectory);
+                }
+                if (!Directory.Exists(tempVoiceDirectory))
+                {
+                    Directory.CreateDirectory(tempVoiceDirectory);
+                }
+                if (!Directory.Exists(tempVideoDirectory))
+                {
+                    Directory.CreateDirectory(tempVideoDirectory);
+                }
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                ErrorCode = ex.Message;
+            }
+            return result;
         }
 
         /// <summary>
@@ -83,7 +116,12 @@ namespace skyperecorder.Library
             bool result = false;
             try
             {
+                //chat events
                 ((_ISkypeEvents_Event)skype).MessageStatus -= ChangeMessageStatus;
+
+                //voice event
+                ((_ISkypeEvents_Event)skype).CallStatus -= ChangeCallStatus;
+
                 result = true;
             }
             catch (Exception ex)
@@ -110,6 +148,16 @@ namespace skyperecorder.Library
                 ErrorCode = ex.Message;
                 listOfResult.Add(false);
             }
+            try
+            {
+                ((_ISkypeEvents_Event)skype).CallStatus += ChangeCallStatus;
+                listOfResult.Add(true);
+            }
+            catch (Exception ex)
+            {
+                ErrorCode += ";" + ex.Message;
+                listOfResult.Add(false);
+            }
             bool result = true;
             foreach (bool oneResult in listOfResult)
             {
@@ -119,6 +167,57 @@ namespace skyperecorder.Library
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Change status call (voice)
+        /// </summary>
+        /// <remarks>
+        /// Voice message
+        /// </remarks>
+        /// <param name="call">talk to person</param>
+        /// <param name="status">status of talk</param>
+        private void ChangeCallStatus(Call call, TCallStatus status)
+        {
+            try
+            {
+                //call is now calling
+                if (status == TCallStatus.clsRinging)
+                {
+                    //this person calling -> call.PartnerDisplayName;
+                }
+
+                //press disallow
+                else if (status == TCallStatus.clsRefused)
+                {
+
+                }
+
+                //press stop
+                else if (status == TCallStatus.clsCancelled)
+                {
+
+                }
+
+                //talk is now progress
+                else if (status == TCallStatus.clsInProgress)
+                {
+                    //record voice
+                    call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVideoDirectory + "\\" + "out.wav");
+                    call.set_OutputDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + "in.wav");
+                    call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + "capture.wav");
+                }
+
+                //call is finish (now can wav convert to mp3)
+                else if (status == TCallStatus.clsFinished)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorCode = ex.Message;
+            }
         }
 
         /// <summary>
