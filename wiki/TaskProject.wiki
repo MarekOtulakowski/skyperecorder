@@ -1,0 +1,13 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+Creating project
+
+
+= Details =
+Task project:
+  * *Saves* message in diffrent place like
+  * _files_
+  * _database_
+  * *Program* runs as plugin
+Temporary is all :)
