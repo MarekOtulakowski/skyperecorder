@@ -5,3 +5,7 @@ D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.Properties
 D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.csproj.GenerateResource.Cache
 D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.exe
 D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.pdb
+D:\vs2008\skyperecorder\skyperecorder.GUI\bin\Debug\skyperecorder.Library.dll
+D:\vs2008\skyperecorder\skyperecorder.GUI\bin\Debug\Interop.SKYPE4COMLib.dll
+D:\vs2008\skyperecorder\skyperecorder.GUI\bin\Debug\skyperecorder.Library.pdb
+D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.F_Main.resources

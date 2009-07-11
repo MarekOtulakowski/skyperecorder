@@ -3,3 +3,6 @@ D:\vs2008\skyperecorder\skyperecorder.Library\bin\Debug\skyperecorder.Library.pd
 D:\vs2008\skyperecorder\skyperecorder.Library\obj\Debug\ResolveAssemblyReference.cache
 D:\vs2008\skyperecorder\skyperecorder.Library\obj\Debug\skyperecorder.Library.dll
 D:\vs2008\skyperecorder\skyperecorder.Library\obj\Debug\skyperecorder.Library.pdb
+D:\vs2008\skyperecorder\skyperecorder.Library\bin\Debug\Interop.SKYPE4COMLib.dll
+D:\vs2008\skyperecorder\skyperecorder.Library\obj\Debug\Interop.SKYPE4COMLib.dll
+D:\vs2008\skyperecorder\skyperecorder.Library\obj\Debug\skyperecorder.Library.csproj.ResolveComReference.cache
