@@ -203,7 +203,7 @@ namespace skyperecorder.Library
                 else if (status == TCallStatus.clsInProgress)
                 {
                     //record voice
-                    call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVideoDirectory + "\\" + "out.wav");
+                    call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + "out.wav");
                     call.set_OutputDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + "in.wav");
                     call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + "capture.wav");
                 }
