@@ -1,0 +1,5 @@
+D:\vs2008\skyperecorder\skyperecorder.Library\bin\Debug\skyperecorder.Library.dll
+D:\vs2008\skyperecorder\skyperecorder.Library\bin\Debug\skyperecorder.Library.pdb
+D:\vs2008\skyperecorder\skyperecorder.Library\obj\Debug\ResolveAssemblyReference.cache
+D:\vs2008\skyperecorder\skyperecorder.Library\obj\Debug\skyperecorder.Library.dll
+D:\vs2008\skyperecorder\skyperecorder.Library\obj\Debug\skyperecorder.Library.pdb

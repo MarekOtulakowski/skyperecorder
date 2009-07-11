@@ -1,0 +1,7 @@
+D:\vs2008\skyperecorder\skyperecorder.GUI\bin\Debug\skyperecorder.GUI.exe
+D:\vs2008\skyperecorder\skyperecorder.GUI\bin\Debug\skyperecorder.GUI.pdb
+D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.Properties.Resources.resources
+D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.csproj.GenerateResource.Cache
+D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.exe
+D:\vs2008\skyperecorder\skyperecorder.GUI\obj\Debug\skyperecorder.GUI.pdb
