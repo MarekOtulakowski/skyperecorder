@@ -1,0 +1,1 @@
+regsvr32 /U Skype4COM.dll

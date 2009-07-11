@@ -48,6 +48,16 @@
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="binaries\lame.exe" />
+    <Content Include="binaries\lame_enc.dll" />
+    <Content Include="binaries\Skype4COM.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="binaries\reg_skype4com.bat" />
+    <None Include="binaries\Skype4COM.chm" />
+    <None Include="binaries\unreg_skype4com.bat" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
