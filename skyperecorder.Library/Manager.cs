@@ -111,9 +111,9 @@ namespace skyperecorder.Library
                 listOfResult.Add(false);
             }
             bool result = true;
-            foreach (bool jRezultat in listOfResult)
+            foreach (bool oneResult in listOfResult)
             {
-                if (!jRezultat)
+                if (!oneResult)
                 {
                     result = false;
                 }
