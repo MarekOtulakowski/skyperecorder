@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 #endregion
 
-namespace skyperecorder.library
+namespace skyperecorder.Library
 {
     /// <summary>
     /// Status of Skype

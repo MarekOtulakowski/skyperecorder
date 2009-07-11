@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 #endregion
 
-namespace skyperecorder.library
+namespace skyperecorder.Library
 {
     /// <summary>
     /// Class to store one video message
