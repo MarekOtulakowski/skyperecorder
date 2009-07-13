@@ -62,9 +62,9 @@ namespace skyperecorder.Library
     public class Manager
     {
         #region Variable
-        public string tempChatDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempChat";
-        public string tempVoiceDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVoice";
-        public string tempVideoDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVideo";
+        public static string tempChatDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempChat";
+        public static string tempVoiceDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVoice";
+        public static string tempVideoDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVideo";
         public string ErrorCode { get; set; } 
         public static SKYPE4COMLib.Skype skype = new SKYPE4COMLib.Skype();
         private IOperate interfaceToOperate = null;
@@ -282,16 +282,60 @@ namespace skyperecorder.Library
                 if ((status == TChatMessageStatus.cmsReceived) &&
                     (chatmessage.Type == TChatMessageType.cmeSaid)) 
                 {
-                    //to write
-                    //create and save (text, chat) message
+                    List<string> listOfRecipients = new List<string>();
+                    if (chatmessage.Chat.Type == TChatType.chatTypeMultiChat)
+                    {
+                        //conferenc talk > 2 users
+                        UserCollection collectionOfUsers = chatmessage.Chat.Members as UserCollection;
+                        foreach (User oneUser in collectionOfUsers)
+                        {
+                            listOfRecipients.Add(oneUser.Handle);
+                        }
+                    }
+                    else
+                    {
+                        //pair talk < 3 users
+                        listOfRecipients.Add(skype.CurrentUser.Handle);
+                    }
+                    ChatMessage receiveChatMessage = new ChatMessage(chatmessage.FromHandle,
+                                                                     listOfRecipients,
+                                                                     chatmessage.Body,
+                                                                     chatmessage.Timestamp,
+                                                                     chatmessage.Chat.Blob);
+                    interfaceToOperate.AddMessage(receiveChatMessage, TypeConversation.Chat);
                 }
 
                 //chat send
                 else if ((status == TChatMessageStatus.cmsSending) &&
                          (chatmessage.Type == TChatMessageType.cmeSaid))
                 {
-                    //to write
-                    //create and save (text, chat) message
+                    List<string> listOfRecipients = new List<string>();
+                    string recipient = string.Empty;
+                    if (chatmessage.Chat.Type == TChatType.chatTypeMultiChat)
+                    {
+                        //conferenc talk > 2 users
+                        UserCollection collectOfUsers = chatmessage.Chat.Members as UserCollection;
+                        foreach (User oneUser in collectOfUsers)
+                        {
+                            if (oneUser.Handle != skype.CurrentUser.Handle)
+                            {
+                                //if itsn't me
+                                listOfRecipients.Add(oneUser.Handle);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //talk in one person
+                        recipient = chatmessage.Chat.DialogPartner;
+                        listOfRecipients.Add(recipient);
+                    }
+                    ChatMessage receiveChatMessage = new ChatMessage(chatmessage.FromHandle,
+                                                                     listOfRecipients,
+                                                                     chatmessage.Body,
+                                                                     chatmessage.Timestamp,
+                                                                     chatmessage.Chat.Blob);
+                    interfaceToOperate.AddMessage(receiveChatMessage, TypeConversation.Chat);
                 }
             }
             catch (Exception ex)

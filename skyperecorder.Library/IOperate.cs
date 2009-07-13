@@ -36,13 +36,7 @@ namespace skyperecorder.Library
         //add
         bool AddMessage(ChatMessage oneMessage, TypeConversation typeConversation);
 
-        //edit
-        bool EditMessage(ChatMessage oneMessage, TypeConversation typeConversation);
-
         //delete
         bool DeleteChatMessage(ChatMessage oneMessage, TypeConversation typeConversation);
-
-        //information
-        int CountMessage(TypeConversation typeConversation);
     }
 }
