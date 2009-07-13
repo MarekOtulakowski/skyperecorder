@@ -88,7 +88,7 @@ namespace skyperecorder.GUI
         {
             if (managerSkype != null)
             {
-                OpenFolderInExplorer(managerSkype.tempChatDirectory); 
+                OpenFolderInExplorer(Manager.tempChatDirectory); 
             }
         }
 
@@ -101,7 +101,7 @@ namespace skyperecorder.GUI
         {
             if (managerSkype != null)
             {
-                OpenFolderInExplorer(managerSkype.tempVoiceDirectory); 
+                OpenFolderInExplorer(Manager.tempVoiceDirectory); 
             }
         }
 
@@ -114,7 +114,7 @@ namespace skyperecorder.GUI
         {
             if (managerSkype != null)
             {
-                OpenFolderInExplorer(managerSkype.tempVideoDirectory); 
+                OpenFolderInExplorer(Manager.tempVideoDirectory); 
             }
         }
 

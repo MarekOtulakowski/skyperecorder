@@ -103,7 +103,7 @@ namespace skyperecorder.Library
                 //Chat
                 if (typeConversation == TypeConversation.Chat)
                 {
-                    //not implement
+                    //not yet implement
                     //CountChatMessage--;
                     //result = true;
                 }

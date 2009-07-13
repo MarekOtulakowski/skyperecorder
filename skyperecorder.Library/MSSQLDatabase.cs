@@ -21,19 +21,9 @@ namespace skyperecorder.Library
             return true;
         }
 
-        bool IOperate.EditMessage(ChatMessage oneMessage, TypeConversation typeConversation)
-        {
-            return true;
-        }
-
         bool IOperate.DeleteChatMessage(ChatMessage oneMessage, TypeConversation typeConversation)
         {
             return true;
-        }
-
-        int IOperate.CountMessage(TypeConversation typeConversation)
-        {
-            return 0;
         }
         #endregion
     }
