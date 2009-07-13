@@ -21,7 +21,7 @@ namespace skyperecorder.Library
             return true;
         }
 
-        bool IOperate.DeleteChatMessage(ChatMessage oneMessage, TypeConversation typeConversation)
+        bool IOperate.DeleteMessage(ChatMessage oneMessage, TypeConversation typeConversation)
         {
             return true;
         }

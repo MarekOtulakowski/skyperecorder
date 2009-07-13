@@ -95,7 +95,7 @@ namespace skyperecorder.Library
         /// <param name="oneMessage">One message (text, voice, video)</param>
         /// <param name="typeConversation">Type conversation (Enum TypeConversation)</param>
         /// <returns>true if add successfull</returns>
-        bool IOperate.DeleteChatMessage(ChatMessage oneMessage, TypeConversation typeConversation)
+        bool IOperate.DeleteMessage(ChatMessage oneMessage, TypeConversation typeConversation)
         {
             bool result = false;
             try
