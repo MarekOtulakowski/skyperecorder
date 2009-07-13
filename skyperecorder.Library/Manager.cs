@@ -203,9 +203,14 @@ namespace skyperecorder.Library
                 else if (status == TCallStatus.clsInProgress)
                 {
                     //record voice
-                    call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + "out.wav");
-                    call.set_OutputDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + "in.wav");
-                    call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + "capture.wav");
+                    string uniqueLabel = string.Empty;
+                    uniqueLabel = DateTime.Now.ToString();
+                    uniqueLabel = uniqueLabel.Replace(":", "");
+                    uniqueLabel = uniqueLabel.Replace(" ", "");
+                    uniqueLabel = uniqueLabel.Replace("-", "");
+
+                    call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + uniqueLabel + "speaker.wav");
+                    call.set_CaptureMicDevice(TCallIoDeviceType.callIoDeviceTypeFile, tempVoiceDirectory + "\\" + uniqueLabel + "microfon.wav");
                 }
 
                 //call is finish (now can wav convert to mp3)
