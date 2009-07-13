@@ -78,9 +78,12 @@ namespace skyperecorder.Library
         public Manager(KindOfStore kindOfStore, string pathOrConnectionString)
         {
             //set temporary paths
-            tempChatDirectory = pathOrConnectionString + "\\tempChat";
-            tempVoiceDirectory = pathOrConnectionString + "\\tempVoice";
-            tempVideoDirectory = pathOrConnectionString + "\\tempVideo";
+            if (kindOfStore == KindOfStore.KoS_File)
+            {
+                tempChatDirectory = pathOrConnectionString + "\\tempChat";
+                tempVoiceDirectory = pathOrConnectionString + "\\tempVoice";
+                tempVideoDirectory = pathOrConnectionString + "\\tempVideo";
+            }
 
             //set store
             switch (kindOfStore)
