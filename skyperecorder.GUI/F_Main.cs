@@ -59,7 +59,7 @@ namespace skyperecorder.GUI
         private void B_attachToSkype_Click(object sender, EventArgs e)
         {
             //create manager instance
-            managerSkype = new Manager();
+            managerSkype = new Manager(KindOfStore.KoS_File, TB_pathToStore.Text);
 
             //inform user when manager success access to Skype
             AccessToSkype(true);
@@ -118,6 +118,10 @@ namespace skyperecorder.GUI
             }
         }
 
+        /// <summary>
+        /// Open Folder In Explorer
+        /// </summary>
+        /// <param name="path">Path to open</param>
         private void OpenFolderInExplorer(string path)
         {
             if (Directory.Exists(path))
@@ -128,6 +132,51 @@ namespace skyperecorder.GUI
                 process.StartInfo.Arguments = path;
                 process.Start();
             }
+        }
+
+        /// <summary>
+        /// Event on start display form
+        /// </summary>
+        /// <param name="sender">Form</param>
+        /// <param name="e">Form Events</param>
+        private void F_Main_Load(object sender, EventArgs e)
+        {
+            SetPathToStore();
+        }
+
+        /// <summary>
+        /// Sets path to store case of RadioButton checked
+        /// </summary>
+        private void SetPathToStore()
+        {
+            if (RB_file.Checked)
+            {
+                TB_pathToStore.Text = System.Environment.GetEnvironmentVariable("TEMP");
+            }
+            else if (RB_MSSQL.Checked)
+            {
+                TB_pathToStore.Text = "...connection string...";
+            }
+        }
+
+        /// <summary>
+        /// Event change checked RadioButton "Files"
+        /// </summary>
+        /// <param name="sender">RadioButton</param>
+        /// <param name="e">Radio Button Events</param>
+        private void RB_file_CheckedChanged(object sender, EventArgs e)
+        {
+            SetPathToStore();
+        }
+
+        /// <summary>
+        /// Event change checked RadioButton "MSSQL"
+        /// </summary>
+        /// <param name="sender">RadioButton</param>
+        /// <param name="e">Radio Button Events</param>
+        private void RB_MSSQL_CheckedChanged(object sender, EventArgs e)
+        {
+            SetPathToStore();
         }
     }
 }

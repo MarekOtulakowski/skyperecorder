@@ -38,6 +38,25 @@ namespace skyperecorder.Library
     }
 
     /// <summary>
+    /// Kind of store
+    /// </summary>
+    /// <remarks>
+    /// file, database(MSSQL), etc...
+    /// </remarks>
+    public enum KindOfStore
+    {
+        /// <summary>
+        /// File
+        /// </summary>
+        KoS_File,
+
+        /// <summary>
+        /// Database MSSQL
+        /// </summary>
+        KoS_DatabaseMSSQL
+    }
+
+    /// <summary>
     /// Class to manage function and action Skype
     /// </summary>
     public class Manager
@@ -48,13 +67,35 @@ namespace skyperecorder.Library
         public string tempVideoDirectory = System.Environment.GetEnvironmentVariable("TEMP") + "\\tempVideo";
         public string ErrorCode { get; set; } 
         public static SKYPE4COMLib.Skype skype = new SKYPE4COMLib.Skype();
+        private IOperate interfaceToOperate = null;
         #endregion
 
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public Manager()
+        /// <param name="kindOfStore">Enum KindOfStore</param>
+        /// <param name="pathOrConnectionString">Path to file or ConnectionString to MSSQL</param>
+        public Manager(KindOfStore kindOfStore, string pathOrConnectionString)
         {
+            //set temporary paths
+            tempChatDirectory = pathOrConnectionString + "\\tempChat";
+            tempVoiceDirectory = pathOrConnectionString + "\\tempVoice";
+            tempVideoDirectory = pathOrConnectionString + "\\tempVideo";
+
+            //set store
+            switch (kindOfStore)
+            {
+                case KindOfStore.KoS_File:
+                    interfaceToOperate = new FileDatabase();
+                    break;
+                case KindOfStore.KoS_DatabaseMSSQL:
+                    interfaceToOperate = new MSSQLDatabase();
+                    break;
+                default:
+                    interfaceToOperate = new FileDatabase();
+                    break;
+            }
+
             //attach to skype API
             ConnectToSkype();
 

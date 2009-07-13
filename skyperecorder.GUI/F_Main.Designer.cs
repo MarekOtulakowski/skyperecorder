@@ -33,6 +33,11 @@
             this.B_openChatFolder = new System.Windows.Forms.Button();
             this.B_openVoiceFolder = new System.Windows.Forms.Button();
             this.B_openVideoFolder = new System.Windows.Forms.Button();
+            this.GB_whereStore = new System.Windows.Forms.GroupBox();
+            this.RB_file = new System.Windows.Forms.RadioButton();
+            this.RB_MSSQL = new System.Windows.Forms.RadioButton();
+            this.TB_pathToStore = new System.Windows.Forms.TextBox();
+            this.GB_whereStore.SuspendLayout();
             this.SuspendLayout();
             // 
             // B_attachToSkype
@@ -85,11 +90,55 @@
             this.B_openVideoFolder.UseVisualStyleBackColor = true;
             this.B_openVideoFolder.Click += new System.EventHandler(this.B_openVideoFolder_Click);
             // 
+            // GB_whereStore
+            // 
+            this.GB_whereStore.Controls.Add(this.RB_MSSQL);
+            this.GB_whereStore.Controls.Add(this.RB_file);
+            this.GB_whereStore.Location = new System.Drawing.Point(157, 79);
+            this.GB_whereStore.Name = "GB_whereStore";
+            this.GB_whereStore.Size = new System.Drawing.Size(103, 81);
+            this.GB_whereStore.TabIndex = 5;
+            this.GB_whereStore.TabStop = false;
+            this.GB_whereStore.Text = "Where store?";
+            // 
+            // RB_file
+            // 
+            this.RB_file.AutoSize = true;
+            this.RB_file.Checked = true;
+            this.RB_file.Location = new System.Drawing.Point(7, 19);
+            this.RB_file.Name = "RB_file";
+            this.RB_file.Size = new System.Drawing.Size(46, 17);
+            this.RB_file.TabIndex = 0;
+            this.RB_file.TabStop = true;
+            this.RB_file.Text = "Files";
+            this.RB_file.UseVisualStyleBackColor = true;
+            this.RB_file.CheckedChanged += new System.EventHandler(this.RB_file_CheckedChanged);
+            // 
+            // RB_MSSQL
+            // 
+            this.RB_MSSQL.AutoSize = true;
+            this.RB_MSSQL.Location = new System.Drawing.Point(7, 39);
+            this.RB_MSSQL.Name = "RB_MSSQL";
+            this.RB_MSSQL.Size = new System.Drawing.Size(62, 17);
+            this.RB_MSSQL.TabIndex = 1;
+            this.RB_MSSQL.Text = "MSSQL";
+            this.RB_MSSQL.UseVisualStyleBackColor = true;
+            this.RB_MSSQL.CheckedChanged += new System.EventHandler(this.RB_MSSQL_CheckedChanged);
+            // 
+            // TB_pathToStore
+            // 
+            this.TB_pathToStore.Location = new System.Drawing.Point(36, 175);
+            this.TB_pathToStore.Name = "TB_pathToStore";
+            this.TB_pathToStore.Size = new System.Drawing.Size(224, 20);
+            this.TB_pathToStore.TabIndex = 6;
+            // 
             // F_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 273);
+            this.Controls.Add(this.TB_pathToStore);
+            this.Controls.Add(this.GB_whereStore);
             this.Controls.Add(this.B_openVideoFolder);
             this.Controls.Add(this.B_openVoiceFolder);
             this.Controls.Add(this.B_openChatFolder);
@@ -97,7 +146,11 @@
             this.Controls.Add(this.B_attachToSkype);
             this.Name = "F_Main";
             this.Text = "Program Interface v.1";
+            this.Load += new System.EventHandler(this.F_Main_Load);
+            this.GB_whereStore.ResumeLayout(false);
+            this.GB_whereStore.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,6 +161,10 @@
         private System.Windows.Forms.Button B_openChatFolder;
         private System.Windows.Forms.Button B_openVoiceFolder;
         private System.Windows.Forms.Button B_openVideoFolder;
+        private System.Windows.Forms.GroupBox GB_whereStore;
+        private System.Windows.Forms.RadioButton RB_MSSQL;
+        private System.Windows.Forms.RadioButton RB_file;
+        private System.Windows.Forms.TextBox TB_pathToStore;
     }
 }
 
