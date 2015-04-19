@@ -9,6 +9,3 @@ Automatically exported from code.google.com/p/skyperecorder
 * Program runs as plugin
 *that's mine "program " does replace main Skype program this work in background
 * Temporary is all :)
-
-# Build version and description
-Download from https://github.com/MarekOtulakowski/skyperecorder/wiki/Download-build-files
